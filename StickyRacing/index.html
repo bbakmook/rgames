@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>꒦꒷︶찐득이 레이싱꒷︶꒦ (Sticky Man Racing)</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="mobile-frame">
+        <div id="copyright-bar">
+            © 2026 <a href="https://www.instagram.com/jongyounee" target="_blank">bbakmook</a> 
+            이 프로그램은 프리웨어이며 방송이나 영상 등을 포함한 어떤 용도로든 자유롭게 사용하는 것이 허용되어있습니다.
+        </div> 
+        
+        <div id="game-canvas-wrapper"></div>
+        <div id="overlay-layer"></div>
+        <div id="minimap"><div class="mm-goal"></div></div>
+        
+        <div id="top-share-btn" onclick="shareResult()">📤 공유하기</div>
+
+       <div id="step-1" class="ui-layer">
+            <div class="interactive">
+                <h1>
+                    <!-- 왼쪽 장식: 순차적으로 흐르도록 offset 0, 1, 2 설정 -->
+                    <span class="dynamic-symbol" data-offset="0">︶</span>
+                    <span class="dynamic-symbol" data-offset="1">꒷</span>
+                    <span class="dynamic-symbol" data-offset="2">꒦</span>
+                    
+                    찐득이 레이싱
+                    
+                    <!-- 오른쪽 장식: 대칭을 위해 역순 설정 -->
+                    <span class="dynamic-symbol" data-offset="2">꒦</span>
+                    <span class="dynamic-symbol" data-offset="1">꒷</span>
+                    <span class="dynamic-symbol" data-offset="0">︶</span>
+                </h1>
+                
+                <h2 class="rainbow-text">오늘의 벌칙 당첨자는 누구 !?</h2>
+                
+                <p>참가 인원 (2~30)</p>
+                <input type="number" id="player-count" min="2" max="10" value="10">
+                <p id="error-msg"></p> 
+                <button onclick="goToStep2()">다음</button>
+            </div>
+        </div>
+
+        <div id="step-2" class="ui-layer hidden">
+            <div class="interactive">
+                <h2>선수 명단(⭐이름 변경 가능⭐)</h2>
+                <div id="player-inputs" style="max-height: 200px; overflow-y: auto;"></div>
+                <button onclick="prepareGame()">🏁 준비 완료</button>
+            </div>
+        </div>
+
+        <div id="countdown-screen" class="ui-layer hidden">
+            <div id="countdown-text">READY</div>
+        </div>
+
+        <div id="result-screen" class="ui-layer hidden" style="z-index: 999;">
+            <div class="interactive">
+                <h2>🏆 경기 결과</h2>
+                <div id="result-list-box"></div>
+                
+                <div style="margin-top: 15px;">
+                    <button onclick="shareResult()" style="background:#e74c3c; color:white; border:none; padding:10px 20px; border-radius:5px; width:100%; margin-bottom:10px; font-size:16px; cursor:pointer;">
+                        📥 결과 공유
+                    </button>
+                    <button onclick="location.reload()" style="background:#3498db; color:white; border:none; padding:10px 20px; border-radius:5px; width:100%; font-size:16px; cursor:pointer;">
+                        🔄 다시 하기
+                    </button>
+                </div>
+            </div> 
+        </div> 
+        <div id="bottom-ad">📢 [광고] 찐득이 레이싱 - 슬로우 모션 에디션</div>
+        <div id="interstitial-ad" style="display: none;">
+            <div style="background:white; width:250px; height:150px; display:flex; flex-direction:column; justify-content:center; align-items:center; color:black; border-radius:10px; box-shadow:0 0 20px rgba(0,0,0,0.5);">
+                <h3 style="margin:0 0 20px 0; color:#333;">전면 광고</h3>
+                <div style="font-size:12px; color:#666; margin-bottom:20px;">광고가 노출되는 영역입니다.</div>
+                <button onclick="window.closeAd()" style="background:#e74c3c; color:white; border:none; padding:8px 25px; border-radius:5px; cursor:pointer; font-weight:bold; touch-action: manipulation;">닫기</button>
+            </div>
+        </div>
+<script src="game.js"></script>
+</body>
+</html>
