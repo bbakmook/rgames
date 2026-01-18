@@ -26,7 +26,7 @@ const Engine = Matter.Engine, Render = Matter.Render, Runner = Matter.Runner,
             errEl.innerText = "🚫 참가 인원은 2명에서 30명 사이여야 합니다.";
             input.style.border = "2px solid #e74c3c";
             return;
-        }123123
+        }
         
         errEl.innerText = "";
         input.style.border = "1px solid #7f8c8d";
